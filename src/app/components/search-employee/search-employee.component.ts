@@ -26,9 +26,10 @@ export class SearchEmployeeComponent implements OnInit {
 
   doFilter( input ){
     let filteredData = [];
+    input = input.trim().toUpperCase();
     if ( input ) {
       filteredData = this.dataSource.filter( ( employee )  => {
-        return employee.eId.includes(input);
+        return employee.eId.toUpperCase().includes(input);
       });
     } else {
       // reset the table when input is empty
@@ -39,6 +40,5 @@ export class SearchEmployeeComponent implements OnInit {
 
   onClickNombre(val) {
     console.log(val);
-    console.log('Click nombre');
   }
 }
