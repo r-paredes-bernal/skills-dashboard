@@ -25,6 +25,7 @@ export class SearchEmployeeComponent implements OnInit {
   }
 
   doFilter( input ){
+    console.log(input);
     let filteredData = [];
     input = input.trim().toUpperCase();
     if ( input ) {
