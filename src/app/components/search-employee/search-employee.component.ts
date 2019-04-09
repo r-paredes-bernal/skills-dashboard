@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../../interfaces/Employee';
+import { EmployeeService } from '../../services/employee.service';
 
+/*
 const EMPLOYEE_DATA: Employee[] = [
   {sysId: 1, eId: 'carlos.baez', name: 'Baez Carlos', level: 11, location: 'CD-MX', birthday: '00/00/00'},
   {sysId: 2, eId: 's.coronado.andrad', name: 'Coronado Andrade, S.', level: 12, location: 'MTY', birthday: '00/00/00'},
@@ -8,6 +10,7 @@ const EMPLOYEE_DATA: Employee[] = [
   {sysId: 4, eId: 'r.sanchez.rojas', name: 'Sanchez Rojas, R.', level: 10, location: 'MTY', birthday: '00/00/00'},
   {sysId: 5, eId: 'ivan.albor', name: 'Albor, Ivan', level: 9, location: 'USA', birthday: '00/00/00'},
 ];
+*/
 
 @Component({
   selector: 'app-search-employee',
@@ -16,10 +19,23 @@ const EMPLOYEE_DATA: Employee[] = [
 })
 export class SearchEmployeeComponent implements OnInit {
   displayedColumns: string[] = ['eId', 'name', 'level', 'location'];
-  dataSource = EMPLOYEE_DATA;
   idInput;
+  dataSource;
+  originalDataSource;
 
-  constructor() { }
+  constructor(private employeeService: EmployeeService) {
+
+    this.employeeService.getEmployees()
+    .subscribe(
+      (data) => {
+        this.dataSource = data;
+        this.originalDataSource = data;
+        },
+        (error) => {
+          console.error('Error en getEmployees(): ' + JSON.stringify(error));
+        }
+      );
+  }
 
   ngOnInit() {
   }
@@ -34,7 +50,7 @@ export class SearchEmployeeComponent implements OnInit {
       });
     } else {
       // reset the table when input is empty
-      filteredData = EMPLOYEE_DATA;
+      filteredData = this.originalDataSource;
     }
     this.dataSource = filteredData;
   }

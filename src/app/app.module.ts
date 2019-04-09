@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { SearchEmployeeComponent } from './components/search-employee/search-employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule, MatInputModule, MatTableModule} from '@angular/material';
+import { EmployeeService } from './services/employee.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,16 @@ import { MatFormFieldModule, MatInputModule, MatTableModule} from '@angular/mate
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
   exports: [
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [
+    EmployeeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
