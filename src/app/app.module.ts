@@ -7,11 +7,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule, MatInputModule, MatTableModule} from '@angular/material';
 import { EmployeeService } from './services/employee.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SelectEmployeeComponent } from './components/select-employee/select-employee.component';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchEmployeeComponent
+    SearchEmployeeComponent,
+    SelectEmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     BrowserAnimationsModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    FormsModule
   ],
   exports: [
     MatFormFieldModule,
