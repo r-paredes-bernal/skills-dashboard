@@ -1,0 +1,8 @@
+<p>
+  <mat-form-field appearance="legacy">
+    <mat-label>Employee ID:</mat-label>
+    <input matInput type="text" (keyup)="doFilter($event.target.value)">
+  </mat-form-field>
+</p>
+<app-table-employee [data]="dataSource"></app-table-employee>
+
