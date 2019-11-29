@@ -15,7 +15,7 @@ export class SelectEmployeeComponent implements OnInit {
     level: 0,
     location: '',
     birthday: ''
-  }
+  };
 
   constructor(private employeeService: EmployeeService) {
     /*
@@ -40,5 +40,6 @@ export class SelectEmployeeComponent implements OnInit {
     // llamar el Servicio saveEmployee y mostrar un mensaje en consola
     // mencionando si el guardado fue exitoso
     // 1 exitoso, 0 o -1 error
+    // saveEmployee
   }
 }

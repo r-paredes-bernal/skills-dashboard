@@ -1,0 +1,9 @@
+table {
+  width: 100%;
+}
+
+.link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}

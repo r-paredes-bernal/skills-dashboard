@@ -10,12 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { SelectEmployeeComponent } from './components/select-employee/select-employee.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { TableEmployeeComponent } from './components/table-employee/table-employee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchEmployeeComponent,
-    SelectEmployeeComponent
+    SelectEmployeeComponent,
+    TableEmployeeComponent
   ],
   imports: [
     BrowserModule,

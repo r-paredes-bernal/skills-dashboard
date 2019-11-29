@@ -2,15 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../../interfaces/Employee';
 import { EmployeeService } from '../../services/employee.service';
 
-/*
-const EMPLOYEE_DATA: Employee[] = [
-  {sysId: 1, eId: 'carlos.baez', name: 'Baez Carlos', level: 11, location: 'CD-MX', birthday: '00/00/00'},
-  {sysId: 2, eId: 's.coronado.andrad', name: 'Coronado Andrade, S.', level: 12, location: 'MTY', birthday: '00/00/00'},
-  {sysId: 3, eId: 'g.rodriguez.lozano', name: 'Rodriguez Lozano, G.', level: 11, location: 'CD-MX', birthday: '00/00/00'},
-  {sysId: 4, eId: 'r.sanchez.rojas', name: 'Sanchez Rojas, R.', level: 10, location: 'MTY', birthday: '00/00/00'},
-  {sysId: 5, eId: 'ivan.albor', name: 'Albor, Ivan', level: 9, location: 'USA', birthday: '00/00/00'},
-];
-*/
+
+
 
 @Component({
   selector: 'app-search-employee',
@@ -18,18 +11,27 @@ const EMPLOYEE_DATA: Employee[] = [
   styleUrls: ['./search-employee.component.css']
 })
 export class SearchEmployeeComponent implements OnInit {
-  displayedColumns: string[] = ['eId', 'name', 'level', 'location'];
+
   idInput;
+  eId = '123';
   dataSource;
   originalDataSource;
-
+/*
+  EMPLOYEE_DATA: Employee[] = [
+    {sysId: 1, eId: 'carlos.baez', name: 'Baez Carlos', level: 11, location: 'CD-MX', birthday: '00/00/00'},
+    {sysId: 2, eId: 's.coronado.andrad', name: 'Coronado Andrade, S.', level: 12, location: 'MTY', birthday: '00/00/00'},
+    {sysId: 3, eId: 'g.rodriguez.lozano', name: 'Rodriguez Lozano, G.', level: 11, location: 'CD-MX', birthday: '00/00/00'},
+    {sysId: 4, eId: 'r.sanchez.rojas', name: 'Sanchez Rojas, R.', level: 10, location: 'MTY', birthday: '00/00/00'},
+    {sysId: 5, eId: 'ivan.albor', name: 'Albor, Ivan', level: 9, location: 'USA', birthday: '00/00/00'},
+  ];
+*/
   constructor(private employeeService: EmployeeService) {
-
     this.employeeService.getEmployees()
     .subscribe(
       (data) => {
         this.dataSource = data;
         this.originalDataSource = data;
+        console.log(this.dataSource);
         },
         (error) => {
           console.error('Error en getEmployees(): ' + JSON.stringify(error));
@@ -41,7 +43,6 @@ export class SearchEmployeeComponent implements OnInit {
   }
 
   doFilter( input ){
-    console.log(input);
     let filteredData = [];
     input = input.trim().toUpperCase();
     if ( input ) {
@@ -55,7 +56,4 @@ export class SearchEmployeeComponent implements OnInit {
     this.dataSource = filteredData;
   }
 
-  onClickNombre(val) {
-    console.log(val);
-  }
 }

@@ -1,0 +1,30 @@
+
+<table mat-table [dataSource]="data">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.sysId}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="eId">
+    <th mat-header-cell *matHeaderCellDef> eId </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.eId}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let employee" (click)="onClickNombre(employee.id)" class="link"> {{employee.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="level">
+    <th mat-header-cell *matHeaderCellDef> Level </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.level}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="location">
+    <th mat-header-cell *matHeaderCellDef> Location </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.location}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let employee; columns: displayedColumns;"></tr>
+</table>
